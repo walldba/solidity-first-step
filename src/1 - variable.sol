@@ -2,7 +2,7 @@
 pragma solidity ^0.8.9;
 
 contract VariableExamples {
-    uint8 public testLimit;
+    uint8 public limitInt;
     int256 public negative = -1;
     uint256 public number;
     int256 public negativeNumber;
@@ -42,14 +42,14 @@ contract VariableExamples {
     }
 
     function insertMaxUint(uint8 _number) external {
-        testLimit = _number;
+        limitInt = _number;
     }
 
     function insertNumber(uint256 _number) external {
         number = _number;
     }
 
-    function testNegative(int256 _number) external view returns (int256) {
+    function sumNegative(int256 _number) external view returns (int256) {
         int256 negativeNum = _number;
 
         int256 negativeSum = negativeNum - negative;
