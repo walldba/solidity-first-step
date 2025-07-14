@@ -1,7 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.16;
+import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract StoreSimulation {
+contract StoreSimulation is Ownable {
     enum Status {
         PENDING,
         LOGGED,
@@ -45,7 +46,7 @@ contract StoreSimulation {
         bool received
     );
 
-    constructor() {
+    constructor() Ownable(msg.sender) {
         products.push(
             Product({
                 id: 0,
@@ -98,7 +99,7 @@ contract StoreSimulation {
         string memory _name,
         uint256 _price,
         uint256 _quantity
-    ) external {
+    ) external onlyOwner {
         products.push(
             Product({
                 id: products.length + 1,

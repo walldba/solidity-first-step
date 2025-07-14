@@ -97,7 +97,16 @@ contract StoreSimulationTest is Test {
         assertTrue(isAvailable);
     }
 
-    function testListProductsAvailable() public {
+    function test_Revert_When_AddProductNotOwner() public {
+        vm.startPrank(testClient);
+
+        vm.expectRevert("Ownable: caller is not the owner");
+        storeSimulation.addProduct("AirPods", 500, 20);
+
+        vm.stopPrank();
+    }
+
+    function testListProductsAvailable() public view {
         StoreSimulation.Product[] memory products = storeSimulation
             .listProductsAvailable();
 
