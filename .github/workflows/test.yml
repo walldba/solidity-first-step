@@ -28,7 +28,7 @@ jobs:
           forge --version
 
       - name: Install dependencies
-        run: forge install
+        run: forge install openzeppelin/openzeppelin-contracts
         id: install
 
       - name: Run Forge build
